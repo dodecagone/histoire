@@ -2,42 +2,6 @@
 #import "@preview/grayness:0.3.0": *
 #import "@preview/cetz:0.3.4"
 
-#let seed = 2193193
-#let seed = seed + 23268710481
-#let seed = seed.bit-xor(seed.bit-lshift(7))
-#let seed = seed.bit-and(0xffffffff)
-#let seed = seed * 146810307;
-#let seed = seed.bit-and(0xffffffff)
-#let seed = seed.bit-xor(seed.bit-rshift(3))
-
-#let yellow_alpha = (seed / 0x80000000 - 1) * 20
-#let yellow_alpha = yellow_alpha * yellow_alpha.signum() + 10
-#let yellow_alpha = yellow_alpha * 1%
-
-/*
-#set page(
-
-  foreground: [
-  // Yellow background (alpha can be tweaked)
-  #place(top + left, rect(fill: rgb("ffffaa00"), width: 100%, height: 100%))
-
-  // Noise background (FAST ALTERNATIVE to the textured background)
-  #place(top + left, image("Backgrounds/noise1.png", height: 100%))
-
-  // Old paper texture backgound (VERY SLOW)
-  //#let data = read("Backgrounds/bg.jpg", encoding: none)
-  //#place(top + left, image-transparency(data, alpha: yellow_alpha, height: 100%))
-// ],
-//   foreground: [
-
-  #rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [
-                      *CONFIDENTIEL*
-            ]))
-
-], width: 21cm, height: 25cm, margin: 5%)
-
-*/
-
 #let censor(str) = box(hide(str), outset: 2pt, fill: black)
 
 #set text(lang: "fr")
@@ -45,6 +9,8 @@
 
 
 #let form(prenoms, nom, datenaissance, a, dep, taille, m_ou_f, photo, rang, division, brigade, signature, remarques) = {
+
+let rng = gen-rng-f((repr(prenoms) + repr(nom)).codepoints().map(str.to-unicode).sum())
 
 set page(foreground: [
 
@@ -57,7 +23,7 @@ set page(foreground: [
     let width = 21
     let height = 25
     
-    let rng = gen-rng-f(1)
+    let rng = rng
     
     // nombre de specks
     let nb_de_specks = 30
@@ -107,7 +73,9 @@ set page(foreground: [
 
 ], width: 21cm, height: 25cm, margin: 5%)
 
-rotate((seed / 0x80000000 - 1) * 0.5deg)[
+let rotation;
+(rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
+rotate(rotation * 1deg)[
 #align(center)[
   #text(size: 17pt)[*DÉPARTEMENT DE L'ARMÉE DE TERRE*]
 
@@ -140,7 +108,7 @@ rotate((seed / 0x80000000 - 1) * 0.5deg)[
 ][
   #square(inset: 0.5pt, width: 100%)[
     #block(clip: true, photo)
-    #place(center + horizon, rotate((1 - seed / 0x80000000)*1.5deg, rect(width: 70%, height: 85%, fill: black)))
+    #place(center + horizon, rotate(-rotation*1.5deg, rect(width: 70%, height: 85%, fill: black)))
   ]
 ]
 
