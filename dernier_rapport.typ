@@ -1,6 +1,4 @@
-// #let censor(str) = highlight(fill: luma(0))[]
-#let censor(s) = s.split("").map(s => box(hide(s), outset: 2pt, fill: black)).join("")
-
+#import "Sources/utils.typ": *
 
 #set page(
   paper: "us-letter",
@@ -13,8 +11,9 @@
 )
 
 #align(center, text(17pt)[
-  *DÉPARTEMENT DE L'ARMÉE DE TERRE* \
-  SECTION ZÊTA
+  *DÉPARTEMENT DE L'ARMÉE DE TERRE*
+
+  Rapport de mission
 ]
 )
 

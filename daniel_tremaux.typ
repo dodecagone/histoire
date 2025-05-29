@@ -1,8 +1,7 @@
 #import "Sources/soldier_form.typ": *
 
 #show: form(
-  121,
-  text[D #censor("aniel")],
+  "D" + censor("aniel"),
   "Trémaux",
   censor("8 Novembre 1960"),
   censor("Quimper"),
@@ -15,5 +14,5 @@
   censor("Brigade d'Enquête sur les Cultes"),
   align(center, image("Images/Signatures/sig_dtremaux.png")),
   // align(horizon + center, text(size: 20pt, "X")), // je sais pas à quoi ca pourrait servir
-  ""
+  censor("Le Colonel Trémaux est devenu Responsable de la Brigade d'Enquête sur les Cultes à la suite de ses travaux de recherches alors qu'il n'était que secrétaire pour un détective privé. Sa perspicacité en ont fait un atout majeur dans la traque du Culte.")
 )
