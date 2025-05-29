@@ -139,7 +139,7 @@ rotate((seed / 0x80000000 - 1) * 0.5deg)[
   #grid(columns: (50%, 50%), fillable("Taille", taille), fillable("Sexe", m_ou_f))
 ][
   #square(inset: 0.5pt, width: 100%)[
-    #photo
+    #block(clip: true, photo)
     #place(center + horizon, rotate((1 - seed / 0x80000000)*1.5deg, rect(width: 70%, height: 85%, fill: black)))
   ]
 ]
