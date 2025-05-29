@@ -138,8 +138,10 @@ rotate((seed / 0x80000000 - 1) * 0.5deg)[
   #grid(columns: (50%, 50%), fillable("À", a), fillable("Dep", dep))
   #grid(columns: (50%, 50%), fillable("Taille", taille), fillable("Sexe", m_ou_f))
 ][
-  #square(photo, inset: 0.5pt, width: 100%)
-  #place(top + left, dx: 5%, dy: 5%, square(width: 90%, fill: black))
+  #square(inset: 0.5pt, width: 100%)[
+    #photo
+    #place(center + horizon, rotate((1 - seed / 0x80000000)*1.5deg, rect(width: 70%, height: 85%, fill: black)))
+  ]
 ]
 
 #v(40pt)
