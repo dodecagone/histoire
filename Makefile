@@ -1,15 +1,23 @@
 TYPST=typst compile
-FLAGS=--font-path ~/.local/share/fonts/ -f pdf
+PDFTOPNG=pdftoppm -png
+TFLAGS=--font-path ~/.local/share/fonts/
 UNCENSORED=--input censored=true
-OBJDIR=PDFs
+PDFDIR=PDFs
+IMAGEDIR=PNGs
 
 SRC=$(wildcard *.typ)
-OBJS=$(addprefix $(OBJDIR)/, $(SRC:.typ=.pdf))
+OBJSPDF=$(addprefix $(PDFDIR)/, $(SRC:.typ=.pdf))
 
-all: $(OBJDIR) $(OBJS)
+all: $(PDFDIR)/ $(IMAGEDIR)/ $(OBJSPDF)
 
-$(OBJDIR):
+%/:
 	mkdir $@
 
-$(OBJDIR)/%.pdf: %.typ
-	$(TYPST) $(FLAGS) $< $@ $(UNCENSORED)
+$(PDFDIR)/%.pdf: %.typ
+	$(TYPST) $(TFLAGS) $< -f pdf $@ $(UNCENSORED)
+	$(PDFTOPNG) $@ $(IMAGEDIR)/$*
+
+clean:
+	rm -rf $(PDFDIR)/
+	rm -rf $(IMAGEDIR)/
+
