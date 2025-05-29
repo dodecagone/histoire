@@ -1,12 +1,10 @@
+#import "utils.typ": *
 #import "@preview/suiji:0.4.0": *
 #import "@preview/grayness:0.3.0": *
 #import "@preview/cetz:0.3.4"
 
-#let censor(str) = box(hide(str), outset: 2pt, fill: black)
-
 #set text(lang: "fr")
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
-
 
 #let form(prenoms, nom, datenaissance, a, dep, taille, m_ou_f, photo, rang, division, brigade, signature, remarques) = {
 
