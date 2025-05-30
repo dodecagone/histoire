@@ -16,8 +16,6 @@
   (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
 
   set page(foreground: {
-    additional_foreground
-
     place(top + left, cetz.canvas(length: 1cm, {
       import cetz.draw: *
 
@@ -68,6 +66,7 @@
       let data = read("Backgrounds/bg.jpg", encoding: none)
       place(top + left, image-transparency(data, alpha: yellow_alpha * old_effect, height: 100%))
     }
+    additional_foreground
   }, width: paper_width, height: paper_height, margin: 5%)
 
   let rotation;
