@@ -1,0 +1,19 @@
+#import "Sources/police_form.typ": *
+
+#show: form(
+  "Salomon",
+  "PESNAULT",
+  "19 Août 1981",
+  "Nantes",
+  "179 cm",
+  "M",
+  "70 kg",
+  align(center, move(dy: 0pt, image("Images/ID/id_spesnault.jpg", width: 100%, height: 100%))),
+  0,
+  [
+  Inspecteur à la Direction de la Surveillance du Territoire.
+
+  Dossier actuel : #errata("signalement d'un enfant disparu dans la région", "caca"). ERRATA \
+  Dossier actuel : conséquences de l'épidémie #censor("de folie") dans la nuit du 01/11/99. Recherche d'un lien avec la hausse récente du taux de criminalité.
+]
+)
