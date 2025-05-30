@@ -1,9 +1,15 @@
 #import "Sources/utils.typ": *
+#import "@preview/suiji:0.4.0": *
 
-#set page(
-  paper: "us-letter",
-  numbering: "1",
-)
+
+#let rng = gen-rng-f(1)
+
+#scanned_effect(rng, 21cm, 29.7cm, fast: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+
+//#set page(
+//  paper: "us-letter",
+//  numbering: "1",
+//)
 #set par(justify: true)
 #set text(
   font: "Libertinus Serif",
@@ -23,8 +29,8 @@
 )
 
 
-*De : Lieutenant L. Goldsberg \
-À : D. Trémaux, responsable BEC*
+*De : Lieutenant L. GOLDSBERG \
+À : D. TRÉMAUX, Responsable BEC*
 
 Ce rapport a pour objectif de rendre compte des résultats obtenus lors de l'intervention du 8 mai 2001 sur des locaux appartenant à l'entreprise KIDSFORSHOW LTD, utilisés comme lieu de tournage d'une émission pour enfant.
 L'équipe C-010 a intervenu sur les lieux à la suite d'agressions commises sur des agents de police durant une inspection des locaux, laquelle a été motivée par le témoignage inquiétant d'un enfant.

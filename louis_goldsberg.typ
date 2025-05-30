@@ -2,7 +2,7 @@
 
 #form(
   "Louis, David",
-  "Goldsberg",
+  "GOLDSBERG",
   "13 Août 1980",
   "Cachan",
   "Val-de-Marne",
@@ -14,5 +14,9 @@
   "Brigade d'Enquête sur les Cultes",
   align(center, image("Images/Signatures/sig_lgoldsberg.png")),
   // align(horizon + center, text(size: 20pt, "X")), // je sais pas à quoi ca pourrait servir
-  "Le Lieutenant Goldsberg a été désigné par le Responsable D. Trémaux comme interface entre les troupes et le responsable "
+  [
+  État psychologique : #censor("très") stable. Le Lieutenant L. GOLDSBERG est jugé apte au terrain.
+
+  Le Lieutenant L. GOLDSBERG a été désigné par le Responsable D. TRÉMAUX comme interface entre les soldats de la Brigade d'Enquête sur les Cultes et le Quartier Général.
+  ]
 )
