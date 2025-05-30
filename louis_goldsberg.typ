@@ -1,7 +1,7 @@
 #import "Sources/soldier_form.typ": *
 
 #show: form(
-  "Louis",
+  "Louis, David",
   "Goldsberg",
   "13 Août 1980",
   "Cachan",

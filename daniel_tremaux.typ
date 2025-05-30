@@ -1,9 +1,9 @@
 #import "Sources/soldier_form.typ": *
 
 #show: form(
-  "D" + censor("aniel"),
+  "D" + censor("aniel") + ", " + censor("Dominique"),
   "Trémaux",
-  censor("8 Novembre 1960"),
+  censor("8 Novembre 1940"),
   censor("Quimper"),
   censor("Finistère"),
   censor("172 cm"),
