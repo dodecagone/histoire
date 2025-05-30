@@ -21,8 +21,8 @@
     #place(top + left, cetz.canvas(length: 1cm, {
       import cetz.draw: *
 
-      let width = paper_width
-      let height = paper_height
+      let width = paper_width / 1cm
+      let height = paper_height / 1cm
       
       let rng = rng
 
