@@ -8,7 +8,7 @@
   censor("Finistère"),
   censor("172 cm"),
   censor("F"),
-  align(center, move(image("Images/ID/id_dtremaux.jpg", width: 100%, height: 100%))),
+  align(center, image("Images/ID/id_dtremaux.jpg", width: 100%, height: 100%)),
   censor("Colonel"),
   censor("Zêta"),
   censor("Brigade d'Enquête sur les Cultes"),
