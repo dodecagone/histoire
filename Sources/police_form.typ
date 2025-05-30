@@ -7,7 +7,7 @@
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
 
 #let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques) = {
-  set text(font: "C059")
+  set text(font: "New Computer Modern")
   set page(background: place(top + right, dx: -10pt, dy: 10pt, image("DST_desat.png", width: 30%)))
 
   let typedtext(c) = move(dy: -4pt, text(font: "P22 Typewriter", c))
