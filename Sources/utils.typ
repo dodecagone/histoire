@@ -15,6 +15,8 @@
   let yellow_alpha;
   (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
 
+  let (yellow_x, yellow_y) = (0, 0)
+  (rng, (yellow_x, yellow_y)) = normal-f(rng, loc: 0.5, scale: 0.1, size: 2)
   set page(foreground: {
     place(top + left, cetz.canvas(length: 1cm, {
       import cetz.draw: *
@@ -66,16 +68,20 @@
       let data = read("Backgrounds/bg.jpg", encoding: none)
       place(top + left, image-transparency(data, alpha: yellow_alpha * old_effect, height: 100%))
     }
+
     additional_foreground
-  }, width: paper_width, height: paper_height, margin: 5%)
+    
+  }, fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), rgb("FFFFFF00"), rgb("FFFFAA").transparentize(100% - yellow_alpha * old_effect)), width: paper_width, height: paper_height, margin: 5%)
 
   let rotation;
   (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
 
+  let mycontent = text(fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), black, rgb("FFFFAA").mix((black, 100%-yellow_alpha * old_effect))), rng_to_content(rng))
+
   if multi_pages {
-    rng_to_content(rng)
+    mycontent
   }
   else {
-    rotate(rotation * 1deg, rng_to_content(rng), reflow: true)
+    rotate(rotation * 1deg, mycontent, reflow: true)
   }
 }
