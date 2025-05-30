@@ -8,7 +8,7 @@
   "Loire-Atlantique",
   "179 cm",
   "M",
-  align(center, move(dy: 10pt, image("Images/ID/id_spesnault.jpg", width: 100%, height: 100%))),
+  align(center, move(dy: 0pt, image("Images/ID/id_spesnault.jpg", width: 100%, height: 100%))),
   "Aspirant",
   "Zêta",
   "Brigade d'Enquête sur les Cultes",
