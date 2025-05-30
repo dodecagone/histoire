@@ -5,7 +5,7 @@
 
 // --input censoring enabled or not
 #let censor(s) = {
-  if "censored" not in sys.inputs or sys.inputs.censored != "false" {
+  if "censored" in sys.inputs and sys.inputs.censored == "true" {
     return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: black)).join("")
   }
   return s
@@ -15,15 +15,14 @@
   let yellow_alpha;
   (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
 
-  show: page.with(foreground: [
+  set page(foreground: [
     #additional_foreground
 
     #place(top + left, cetz.canvas(length: 1cm, {
       import cetz.draw: *
 
-      // attention : dépend de la taille d
-      let width = 21
-      let height = 25
+      let width = paper_width
+      let height = paper_height
       
       let rng = rng
 
