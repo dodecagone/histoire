@@ -62,7 +62,7 @@
 
     if fast {
       // Noise background (FAST ALTERNATIVE to the textured background)
-      place(top + left, image("Backgrounds/noise1.png", height: 100%))
+      place(top + left, image("Backgrounds/noise1.png", width: 100%, height: 100%))
     } else {
       // Old paper texture backgound (VERY SLOW)
       let data = read("Backgrounds/bg.jpg", encoding: none)
@@ -76,12 +76,14 @@
   let rotation;
   (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
 
-  let mycontent = text(fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), black, rgb("FFFFAA").mix((black, 100%-yellow_alpha * old_effect))), rng_to_content(rng))
+  let myfill = gradient.radial(center: (yellow_x*100%, yellow_y*100%), black, rgb("FFFFAA").mix((black, 100%-yellow_alpha * old_effect)))
+  let mycontent = rng_to_content(rng)
 
   if multi_pages {
     mycontent
   }
   else {
+    show rect.where(stroke: none): rect.with(stroke: myfill)
     rotate(rotation * 1deg, mycontent, reflow: true)
   }
 }
