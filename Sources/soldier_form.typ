@@ -8,124 +8,66 @@
 
 #let form(prenoms, nom, datenaissance, a, dep, taille, m_ou_f, photo, rang, division, brigade, signature, remarques) = {
 
-let rng = gen-rng-f((repr(prenoms) + repr(nom)).codepoints().map(str.to-unicode).sum())
+  let rng = gen-rng-f((repr(prenoms) + repr(nom)).codepoints().map(str.to-unicode).sum())
 
-set page(foreground: [
+  scanned_effect(rng, 21cm, 25cm, fast: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+    #align(center)[
+      #text(size: 17pt)[*DÉPARTEMENT DE L'ARMÉE DE TERRE*]
 
-  #rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*]))
+      #text(size: 17pt)[Fiche de personnel]
+    ]
 
-  #place(top + left, cetz.canvas(length: 1cm, {
-    import cetz.draw: *
+    #v(20pt)
 
-    // attention : dépend de la taille d
-    let width = 21
-    let height = 25
-    
-    let rng = rng
-    
-    // nombre de specks
-    let nb_de_specks = 30
+    #let part(title) = align(center)[
+      #line(length: 95%)
+      #v(-10pt)
+      #text(size: 14pt)[*#title*]
+      #v(10pt)
+    ]
 
-    for i in range(nb_de_specks) {
-      let (x, y, a) = (0, 0, 0)
-      (rng, x) = uniform-f(rng, low: 0, high: width)
-      (rng, y) = uniform-f(rng, low: 0, high: height)
-      (rng, a) = uniform-f(rng, low: 0, high: 2*calc.pi)
-      let (x-new, y-new) = (0, 0)
-      let v = ()
-      let (l, n, na, transparency) = (0, 0, 0, 0)
+    #let fillable(key, value) = grid(columns: (auto, 1fr))[#key : ][
+        #box(place(dx: 0.3em, dy: 1pt, line(length: 100% - 10pt, stroke: 0.5pt)))
+        #text(font: "Veteran Typewriter", " " + value)
+      ]
 
-      (rng, n) = integers-f(rng, low: 1, high: 4)
-      (rng, transparency) = uniform-f(rng, low: 0.5, high: 1)
+    #part[Informations personnelles]
 
-      for j in range(n) {
-        (rng, l) = uniform-f(rng, low: 0.02, high: 0.15)
-        (rng, na) = uniform-f(rng, low: -calc.pi / 5, high: calc.pi / 5)
-        a += na
-        (x-new, y-new) = (x + l*calc.cos(a), y + l*calc.sin(a))
-        
-        //(rng, v) = uniform-f(rng, low: -0.1, high: 0.1, size: 2)
-        //(x-new, y-new) = (x - v.at(1), y - v.at(0))
-        
-        let col = rgb("777777")//.transparentize(transparency * 100%)
-        line(stroke: (paint: col, cap: "round", thickness: 1pt),
-          (x, y), (x-new, y-new)
-        )
-        (x, y) = (x-new, y-new)
-      }
-    }
-    circle((width, height), radius: 0.01)
-  }))
+    #grid(columns: (3fr, 1fr), column-gutter: 10pt)[
+      #fillable("Prénom(s)", prenoms)
+      #fillable("Nom", nom)
+      #fillable("Né(e) le", datenaissance)
 
-  // Yellow background (alpha can be tweaked)
-  #place(top + left, rect(fill: rgb("ffffaa00"), width: 100%, height: 100%))
+      #grid(columns: (50%, 50%), fillable("À", a), fillable("Dep", dep))
+      #grid(columns: (50%, 50%), fillable("Taille", taille), fillable("Sexe", m_ou_f))
+    ][
+      #square(inset: 0.5pt, width: 100%)[
+        #block(clip: true, photo)
 
-  // Noise background (FAST ALTERNATIVE to the textured background)
-  #place(top + left, image("Backgrounds/noise1.png", height: 100%))
+        #{
+          let rotation;
+          (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
+          place(center + horizon, rotate(rotation*3deg, rect(width: 70%, height: 85%, fill: black)))
+        }
+      ]
+    ]
 
-  // Old paper texture backgound (VERY SLOW)
-  //#let data = read("bg.jpg", encoding: none)
-  //#place(top + left, image-transparency(data, alpha: yellow_alpha, height: 100%))
-// ],
-//   foreground: [
-
-], width: 21cm, height: 25cm, margin: 5%)
-
-let rotation;
-(rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
-rotate(rotation * 1deg)[
-#align(center)[
-  #text(size: 17pt)[*DÉPARTEMENT DE L'ARMÉE DE TERRE*]
-
-  #text(size: 17pt)[Fiche de personnel]
-]
-
-#v(20pt)
-
-#let part(title) = align(center)[
-  #line(length: 95%)
-  #v(-10pt)
-  #text(size: 14pt)[*#title*]
-  #v(10pt)
-]
-
-#let fillable(key, value) = grid(columns: (auto, 1fr))[#key : ][
-    #box(place(dx: 0.3em, dy: 1pt, line(length: 100% - 10pt, stroke: 0.5pt)))
-    #text(font: "Veteran Typewriter", " " + value)
-  ]
-
-#part[Informations personnelles]
-
-#grid(columns: (3fr, 1fr), column-gutter: 10pt)[
-  #fillable("Prénom(s)", prenoms)
-  #fillable("Nom", nom)
-  #fillable("Né(e) le", datenaissance)
-
-  #grid(columns: (50%, 50%), fillable("À", a), fillable("Dep", dep))
-  #grid(columns: (50%, 50%), fillable("Taille", taille), fillable("Sexe", m_ou_f))
-][
-  #square(inset: 0.5pt, width: 100%)[
-    #block(clip: true, photo)
-    #place(center + horizon, rotate(-rotation*1.5deg, rect(width: 70%, height: 85%, fill: black)))
-  ]
-]
-
-#v(40pt)
-#part[Poste occupé]
+    #v(40pt)
+    #part[Poste occupé]
 
 
-#grid(columns: (50%, 50%), fillable("Rang", rang), fillable("Division", division))
+    #grid(columns: (50%, 50%), fillable("Rang", rang), fillable("Division", division))
 
-#grid(columns: (3fr, 1fr), column-gutter: 10pt)[
-  #fillable("Brigade", brigade)
-][
-  #rect(width: 100%, height: 50pt, inset: 0pt, signature)
-]
+    #grid(columns: (3fr, 1fr), column-gutter: 10pt)[
+      #fillable("Brigade", brigade)
+    ][
+      #rect(width: 100%, height: 50pt, inset: 0pt, signature)
+    ]
 
-#part[Remarques]
+    #part[Remarques]
 
-#text(font: "Veteran Typewriter", remarques)
-]
+    #text(font: "Veteran Typewriter", remarques)
+  ])
 }
 
 // NE PAS TOUCHER À CE QUI EST AU-DESSUS, sinon tout le monde aura pas les mêmes fiches
