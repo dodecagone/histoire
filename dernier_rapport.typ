@@ -10,6 +10,11 @@
   size: 11pt,
 )
 
+#let rng = gen-rng-f(1)
+
+#scanned_effect(rng, 21cm, 29.7cm, multi_pages: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+
+
 #align(center, text(17pt)[
   *DÉPARTEMENT DE L'ARMÉE DE TERRE*
 
@@ -74,3 +79,4 @@ Tous les soldats de la brigade tiennent à souligner l'aggresivité et la sourno
 
 Note : #censor("Le Sergent Y. Cadoret a été envoyé en cellule d'évaluation psychiatrique").
 
+])

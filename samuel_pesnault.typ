@@ -1,6 +1,6 @@
 #import "Sources/soldier_form.typ": *
 
-#show: form(
+#form(
   "Samuel, Pierre",
   "Pesnault",
   "19 Août 1981",

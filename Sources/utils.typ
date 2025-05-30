@@ -11,14 +11,14 @@
   return s
 }
 
-#let scanned_effect(rng, paper_width, paper_height, fast: true, nb_de_specks: 30, old_effect: 50%, additional_foreground, rng_to_content) = {
+#let scanned_effect(rng, paper_width, paper_height, fast: true, multi_pages:false, nb_de_specks: 30, old_effect: 50%, additional_foreground, rng_to_content) = {
   let yellow_alpha;
   (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
 
-  set page(foreground: [
-    #additional_foreground
+  set page(foreground: {
+    additional_foreground
 
-    #place(top + left, cetz.canvas(length: 1cm, {
+    place(top + left, cetz.canvas(length: 1cm, {
       import cetz.draw: *
 
       let width = paper_width / 1cm
@@ -58,9 +58,9 @@
     }))
 
     // Yellow background (alpha can be tweaked)
-    #place(top + left, rect(fill: rgb("ffffaa00"), width: 100%, height: 100%))
+    place(top + left, rect(fill: rgb("ffffaa00"), width: 100%, height: 100%))
 
-    #if fast {
+    if fast {
       // Noise background (FAST ALTERNATIVE to the textured background)
       place(top + left, image("Backgrounds/noise1.png", height: 100%))
     } else {
@@ -68,10 +68,15 @@
       let data = read("Backgrounds/bg.jpg", encoding: none)
       place(top + left, image-transparency(data, alpha: yellow_alpha * old_effect, height: 100%))
     }
-  ], width: paper_width, height: paper_height, margin: 5%)
+  }, width: paper_width, height: paper_height, margin: 5%)
 
-  
   let rotation;
   (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
-  rotate(rotation * 1deg, rng_to_content(rng))
+
+  if multi_pages {
+    rng_to_content(rng)
+  }
+  else {
+    rotate(rotation * 1deg, rng_to_content(rng), reflow: true)
+  }
 }
