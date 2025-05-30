@@ -11,12 +11,20 @@
   return s.split("").map(s => box(s, outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), stroke: rgb("55FFFF77"))).join("")
 }
 
-#let errata(s, c) = box[
-  #s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: white)).join("")
-  #place(top + left, c)
-]
+#let errata(s, c) = {
+  let rng = gen-rng-f((repr(s) + repr(c)).codepoints().map(str.to-unicode).sum())
+  let (errata_dx, errata_dy) = (0, 0)
+  (rng, (errata_dx, errata_dy)) = normal-f(rng, size: 2, loc: 0.6, scale: 0.2)
+  box[
+    #s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: rgb("dddddd"))).join("")
+    #place(top + left, dx: errata_dx * 1pt, dy: errata_dy * 1pt, text(black, c))
+  ]
+}
 
 #let scanned_effect(rng, paper_width, paper_height, fast: true, multi_pages:false, nb_de_specks: 30, old_effect: 50%, additional_foreground, rng_to_content) = {
+
+  set page(fill: rgb("221111").transparentize(100% - old_effect))
+
   let yellow_alpha;
   (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
 
@@ -63,7 +71,7 @@
     }))
 
     // Yellow background (alpha can be tweaked)
-    place(top + left, rect(fill: rgb("ffffaa00"), width: 100%, height: 100%))
+    place(top + left, rect(fill: rgb("ffffaa").transparentize(100% - yellow_alpha * old_effect), width: 100%, height: 100%))
 
     if fast {
       // Noise background (FAST ALTERNATIVE to the textured background)
@@ -76,7 +84,9 @@
 
     additional_foreground
     
-  }, fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), rgb("FFFFFF00"), rgb("FFFFAA").transparentize(100% - yellow_alpha * old_effect)), width: paper_width, height: paper_height, margin: 5%)
+  //}, fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), rgb("FFFFFF00"), rgb("FFFFAA").transparentize(100% - yellow_alpha * old_effect)), width: paper_width, height: paper_height, margin: 5%)
+  }, fill: rgb("FFFF88").transparentize(100% - yellow_alpha * old_effect), width: paper_width, height: paper_height, margin: 5%)
+  //})
 
   let rotation;
   (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
