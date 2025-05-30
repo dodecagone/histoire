@@ -14,9 +14,9 @@
 
   let rng = gen-rng-f(1+(repr(prenom) + repr(nom)).codepoints().map(str.to-unicode).sum())
 
-  scanned_effect(rng, 21cm, 14.8cm, old_effect: 30%, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+  scanned_effect(rng, 21cm, 14.8cm, old_effect: 100%, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
     #align(center)[
-      #move(dx: -50pt, text(size: 15pt)[*Direction de la surveillance du territoire*])
+      #move(dx: -50pt, text(size: 15pt)[*DIRECTION de la SURVEILLANCE du TERRITOIRE*])
 
       #move(dx: -80pt, text(size: 14pt)[Feuille de renseignement])
     ]
@@ -25,9 +25,12 @@
 
     #set text(size: 14pt)
 
+    #let (rng, (write_dx, write_dy)) = normal-f(rng, size: 2, loc: 0, scale: 1)
+
     #let fillable(key, value) = grid(columns: (auto, 1fr))[#key : ][
+      #typedtext(move(dx: write_dx * 1pt, dy: write_dy * 1pt, " " + value))
       //#box(place(dx: 0.3em, dy: 1pt, line(length: 100% - 10pt, stroke: 0.5pt)))
-      #typedtext(" " + value)
+      //#typedtext(" " + value)
     ]
 
     #grid(columns: (3cm, 1fr), column-gutter: 10pt)[
@@ -35,7 +38,7 @@
         #block(clip: true, photo)
 
         #{
-          let rotation;
+          let rotation
           (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
           place(center + horizon, rotate(rotation*3deg, rect(width: 70%, height: 85%, fill: black)))
         }
@@ -54,7 +57,8 @@
     #let checkable(checked, txt) = {
       [*□*]
       if checked {
-        [#h(-12pt) #text(font: "P22 Typewriter", "x")]
+        let (rng, (check_dx, check_dy)) = normal-f(rng, size: 2, loc: 0, scale: 0.5)
+        [#h(-12pt) #box(move(dx: check_dx * 3pt, dy: check_dy * 3pt, text(font: "P22 Typewriter", "x")))]
       }
       h(4pt)
       txt

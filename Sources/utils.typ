@@ -11,6 +11,11 @@
   return s
 }
 
+#let errata(s, c) = box[
+  #s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: white)).join("")
+  #place(top + left, c)
+]
+
 #let scanned_effect(rng, paper_width, paper_height, fast: true, multi_pages:false, nb_de_specks: 30, old_effect: 50%, additional_foreground, rng_to_content) = {
   let yellow_alpha;
   (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
@@ -71,13 +76,14 @@
 
     additional_foreground
     
-  }, fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), rgb("FFFFFF00"), rgb("FFFFAA").transparentize(100% - yellow_alpha * old_effect)), width: paper_width, height: paper_height, margin: 5%)
+  //}, fill: gradient.radial(center: (yellow_x*100%, yellow_y*100%), rgb("FFFFFF00"), rgb("FFFFAA").transparentize(100% - yellow_alpha * old_effect)), width: paper_width, height: paper_height, margin: 5%)
+  }, fill: rgb("FFFFAA").transparentize(100% - yellow_alpha * old_effect), width: paper_width, height: paper_height, margin: 5%)
 
   let rotation;
   (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
 
   let myfill = gradient.radial(center: (yellow_x*100%, yellow_y*100%), black, rgb("FFFFAA").mix((black, 100%-yellow_alpha * old_effect)))
-  let mycontent = rng_to_content(rng)
+  let mycontent = text(fill: color.mix((rgb("000000"), 300%-old_effect), (rgb("ffffaa"), old_effect)), rng_to_content(rng))
 
   if multi_pages {
     mycontent
