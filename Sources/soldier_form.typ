@@ -26,9 +26,11 @@
       #v(10pt)
     ]
 
+    #let (rng, (write_dx, write_dy)) = normal-f(rng, size: 2, loc: 0, scale: 1)
+
     #let fillable(key, value) = grid(columns: (auto, 1fr))[#key : ][
-        #box(place(dx: 0.3em, dy: 1pt, line(length: 100% - 10pt, stroke: 0.5pt)))
-        #text(font: "Veteran Typewriter", " " + value)
+      #move(dx: write_dx * 1pt, dy: write_dy * 1pt, text(font: "Veteran Typewriter", " " + value))
+      #place(dx: 0.3em, dy: 2pt, line(length: 100% - 10pt, stroke: 0.5pt))
       ]
 
     #part[Informations personnelles]
