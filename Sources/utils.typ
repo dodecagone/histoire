@@ -6,7 +6,7 @@
 // --input censoring enabled or not
 #let censor(s) = {
   if "censored" not in sys.inputs or sys.inputs.censored != "false" {
-    return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 1pt, right: 1pt), fill: black)).join("")
+    return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: black)).join("")
   }
   return s
 }
