@@ -18,6 +18,8 @@ $(PDFDIR)/%.pdf: %.typ
 	$(PDFTOPNG) $@ $(IMAGEDIR)/$*
 
 clean:
-	rm -rf $(PDFDIR)/
-	rm -rf $(IMAGEDIR)/
+	rm -f $(PDFDIR)/*.pdf
+	rm -f $(IMAGEDIR)/*.png
 
+clena:
+	mv Makefile hopla
