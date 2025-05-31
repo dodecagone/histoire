@@ -12,9 +12,9 @@
 
   let typedtext(c) = move(dy: -4pt, text(font: "P22 Typewriter", c))
 
-  let rng = gen-rng-f(1+(repr(prenom) + repr(nom)).codepoints().map(str.to-unicode).sum())
+  let rng = gen-rng-f(1+(repr(prenom) + repr(nom) + repr(maj)).codepoints().map(str.to-unicode).sum())
 
-  scanned_effect(rng, 21cm, 16cm, old_effect: old_effect, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+  scanned_effect(rng, 21cm, 14.8cm, old_effect: 30%, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
     #align(center)[
       #move(dx: -50pt, text(size: 15pt)[*DIRECTION de la SURVEILLANCE du TERRITOIRE*])
 
@@ -57,8 +57,8 @@
     #let checkable(checked, txt) = {
       [*□*]
       if checked {
-        let (rng, (check_dx, check_dy)) = normal-f(rng, size: 2, loc: 0, scale: 0.5)
-        [#h(-12pt) #box(move(dx: check_dx * 3pt, dy: check_dy * 3pt, text(font: "P22 Typewriter", "x")))]
+        let (rng, (check_dx, check_dy)) = normal-f(rng, size: 2, loc: 0, scale: 2)
+        [#h(-12pt) #box(move(dx: check_dx * 1pt, dy: check_dy * 1pt, text(font: "P22 Typewriter", "x")))]
       }
       h(4pt)
       txt
