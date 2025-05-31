@@ -40,7 +40,7 @@
         #{
           let rotation
           (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
-          place(center + horizon, rotate(rotation*3deg, rect(width: 70%, height: 85%, fill: black)))
+          place(center + horizon, rotate(rotation*3deg, rect(width: 90%, height: 85%, fill: black)))
         }
       ]
     ][
