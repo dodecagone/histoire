@@ -4,19 +4,19 @@
 
 
 // --input censoring enabled or not
-#let censor(s) = {
+#let censor(s, fill: black) = {
   if "censored" in sys.inputs and sys.inputs.censored == "true" {
-    return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: black)).join("")
+    return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: fill)).join("")
   }
-  return highlight(s, fill: aqua)
+  return highlight(text(fill: fill, s), fill: if fill == black {aqua} else {aqua.lighten(0%)})
 }
 
 #let errata(s, c) = {
   let rng = gen-rng-f((repr(s) + repr(c)).codepoints().map(str.to-unicode).sum())
   let (errata_dx, errata_dy) = (0, 0)
-  (rng, (errata_dx, errata_dy)) = normal-f(rng, size: 2, loc: 0.6, scale: 0.2)
+  (rng, (errata_dx, errata_dy)) = normal-f(rng, size: 2, loc: 0, scale: 1)
   box[
-    #s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: rgb("dddddd"))).join("")
+    #censor(s, fill: rgb("dddddd"))
     #place(top + left, dx: errata_dx * 1pt, dy: errata_dy * 1pt, text(black, c))
   ]
 }
