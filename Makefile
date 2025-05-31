@@ -11,6 +11,8 @@ OBJSPNG=$(addprefix $(IMAGEDIR)/, $(SRC:.typ=-1.png))
 
 all: censored
 
+pdf: $(PDFDIR)/ $(OBJSPDF)
+
 censored: CENSORING=--input censored=true
 censored: $(PDFDIR)/ $(IMAGEDIR)/ $(OBJSPNG)
 
@@ -31,4 +33,4 @@ clean:
 	rm -f $(IMAGEDIR)/*.png
 
 clena:
-	mv Makefile hopla
+	@mv Makefile hopla
