@@ -6,7 +6,7 @@
 // --input censoring enabled or not
 #let censor(s, fill: black) = {
   if "censored" in sys.inputs and sys.inputs.censored == "true" {
-    return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: fill)).join("")
+    return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.5pt, right: 0.5pt), fill: fill)).join("")
   }
   return highlight(text(fill: fill, s), fill: if fill == black {aqua} else {aqua.lighten(0%)})
 }

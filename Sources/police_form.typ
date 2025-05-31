@@ -10,7 +10,7 @@
   set text(font: "New Computer Modern")
   set page(background: place(top + right, dx: -10pt, dy: 10pt, image("DST_desat.png", width: 30%)))
 
-  let typedtext(c) = move(dy: -4pt, text(font: "P22 Typewriter", c))
+  let typedtext(c) = move(dy: -3pt, text(font: "P22 Typewriter", c))
 
   let rng = gen-rng-f(1+(repr(prenom) + repr(nom) + repr(maj)).codepoints().map(str.to-unicode).sum())
 
@@ -72,6 +72,10 @@
     #v(1em)
     #typedtext(remarques)
 
-    #place(bottom + right)[MàJ le : #text(font: "P22 Typewriter", maj)]
+    #align(bottom)[
+        #grid(columns: (5fr, 2fr))[][
+        #fillable("MàJ le", maj)
+      ]
+    ]
   ])
 }
