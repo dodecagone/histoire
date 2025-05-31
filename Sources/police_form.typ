@@ -6,7 +6,7 @@
 #set text(lang: "fr")
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
 
-#let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques) = {
+#let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques, maj) = {
   set text(font: "New Computer Modern")
   set page(background: place(top + right, dx: -10pt, dy: 10pt, image("DST_desat.png", width: 30%)))
 
@@ -71,5 +71,7 @@
 
     #v(1em)
     #typedtext(remarques)
+
+    #place(bottom + right)[MàJ le : #text(font: "P22 Typewriter", maj)]
   ])
 }
