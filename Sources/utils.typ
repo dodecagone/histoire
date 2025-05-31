@@ -92,7 +92,7 @@
   (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
 
   let myfill = gradient.radial(center: (yellow_x*100%, yellow_y*100%), black, rgb("FFFFAA").mix((black, 100%-yellow_alpha * old_effect)))
-  let mycontent = rng_to_content(rng)
+  let mycontent = block(rng_to_content(rng), height: 100%)
 
   if multi_pages {
     mycontent

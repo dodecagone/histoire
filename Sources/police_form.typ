@@ -72,6 +72,6 @@
     #v(1em)
     #typedtext(remarques)
 
-    #place(dy: 1em, bottom + right)[MàJ le : #text(font: "P22 Typewriter", maj)]
+    #place(bottom + right)[MàJ le : #text(font: "P22 Typewriter", maj)]
   ])
 }
