@@ -6,7 +6,7 @@
 #set text(lang: "fr")
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
 
-#let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques, maj) = {
+#let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques, maj, old_effect: 30%) = {
   set text(font: "New Computer Modern")
   set page(background: place(top + right, dx: -10pt, dy: 10pt, image("DST_desat.png", width: 30%)))
 
@@ -14,7 +14,7 @@
 
   let rng = gen-rng-f(1+(repr(prenom) + repr(nom)).codepoints().map(str.to-unicode).sum())
 
-  scanned_effect(rng, 21cm, 16cm, old_effect: 30%, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+  scanned_effect(rng, 21cm, 16cm, old_effect: old_effect, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
     #align(center)[
       #move(dx: -50pt, text(size: 15pt)[*DIRECTION de la SURVEILLANCE du TERRITOIRE*])
 

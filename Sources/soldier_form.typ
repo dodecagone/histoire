@@ -4,11 +4,11 @@
 #set text(lang: "fr")
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
 
-#let form(prenoms, nom, datenaissance, a, dep, taille, m_ou_f, photo, rang, division, brigade, signature, remarques) = {
+#let form(prenoms, nom, datenaissance, a, dep, taille, m_ou_f, photo, rang, division, brigade, signature, remarques, old_effect: 10%) = {
 
   let rng = gen-rng-f((repr(prenoms) + repr(nom)).codepoints().map(str.to-unicode).sum())
 
-  scanned_effect(rng, 21cm, 25cm, old_effect: 10%,fast: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+  scanned_effect(rng, 21cm, 25cm, old_effect: old_effect,fast: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
     #place(top + left, dy: -20pt, image("armee_terre_desat.png", width: 60pt))
     
     #align(center)[
