@@ -2,7 +2,7 @@
 
 #show: form(
   "Salomon",
-  "PESNAULT",
+  "Pesnault",
   "19 Août 1981",
   "Nantes",
   "179 cm",
