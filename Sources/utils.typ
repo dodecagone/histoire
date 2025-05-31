@@ -8,7 +8,7 @@
   if "censored" in sys.inputs and sys.inputs.censored == "true" {
     return s.split("").map(s => box(hide(s), outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), fill: black)).join("")
   }
-  return s.split("").map(s => box(s, outset: (top: 2pt, bottom: 2pt, left: 0.3pt, right: 0.3pt), stroke: rgb("55FFFF77"))).join("")
+  return highlight(s, fill: aqua)
 }
 
 #let errata(s, c) = {
