@@ -26,7 +26,7 @@
   set page(fill: rgb("221111").transparentize(100% - old_effect))
 
   let yellow_alpha;
-  (rng, yellow_alpha) = normal-f(rng, loc: 0.6, scale: 0.2)
+  (rng, yellow_alpha) = normal-f(rng, loc: 1, scale: 0.1)
 
   let (yellow_x, yellow_y) = (0, 0)
   (rng, (yellow_x, yellow_y)) = normal-f(rng, loc: 0.5, scale: 0.1, size: 2)
