@@ -6,7 +6,7 @@
 #set text(lang: "fr")
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
 
-#let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques, maj, old_effect: 30%) = {
+#let form(prenom, nom, datenaissance, a, taille, m_ou_f, poids, photo, type_nb, remarques, maj, old_effect: 30%, censor_id: true) = {
   set text(font: "New Computer Modern")
   set page(background: place(top + right, dx: -10pt, dy: 10pt, image("DST_desat.png", width: 30%)))
 
@@ -40,7 +40,9 @@
         #{
           let rotation
           (rng, rotation) = normal-f(rng, loc: 0, scale: 0.5)
-          place(center + horizon, rotate(rotation*3deg, rect(width: 90%, height: 85%, fill: black)))
+          if censor_id {
+            place(center + horizon, rotate(rotation*3deg, rect(width: 90%, height: 85%, fill: black)))
+          }
         }
       ]
     ][
@@ -64,10 +66,11 @@
       txt
       h(1fr)
     }
-    #checkable(type_nb == 0, [Employé])
+    #checkable(type_nb == 0, [Employé(e)])
     #checkable(type_nb == 1, [Témoin])
-    #checkable(type_nb == 2, [Suspect])
-    #checkable(type_nb == 3, [Victime])
+    #checkable(type_nb == 2, [Suspect(e)])
+    #checkable(type_nb == 3, [Délinquant(e)])
+    #checkable(type_nb == 4, [Victime])
 
     #v(1em)
     #typedtext(remarques)
