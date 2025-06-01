@@ -6,9 +6,12 @@
 #set text(lang: "fr")
 #set par(first-line-indent: (amount: 2em, all: true), justify: true)
 
-#let form(expediteur, destinataire, lieu_date, objet, contenu, signature, postscript) = {
+#let form(expediteur, destinataire, lieu_date, objet, contenu, signature, postscript, logo:true) = {
   set text(font: "New Computer Modern")
-  set page(background: place(top + right, dx: -10pt, dy: 10pt, image("DST_desat.png", width: 30%)))
+  let logo_image
+  if logo {
+    set page(background: place(top + right, dx: -10pt, dy: 10pt, logo_image))
+  }
 
   let rng = gen-rng-f(1+(repr(expediteur) + repr(destinataire) + repr(lieu_date)).codepoints().map(str.to-unicode).sum())
 
@@ -22,18 +25,16 @@
     #set text(size:14pt)
     
     #grid(columns:(59fr,41fr))[][#typedtext(destinataire)]
-    #grid(columns:(auto,auto))[#typedtext(expediteur)][#align(right, typedtext(lieu_date))]
+    #grid(columns:(41fr,59fr))[#typedtext(expediteur)][#align(bottom + right, typedtext(lieu_date))]
     
     #v(2em)
     #typedtext([Objet : #objet])
-    #v(2em)
     #typedtext(contenu)
     
     #grid(columns:(6fr,4fr))[][
       #rect(width:100%,stroke:0pt,inset:0pt,signature)
     ]
 
-    #v(2em)
     #typedtext(postscript)
 
   ])
