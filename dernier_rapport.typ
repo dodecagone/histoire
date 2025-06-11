@@ -8,7 +8,7 @@
 )
 
 #let rng = gen-rng-f(1)
-#scanned_effect(rng, 21cm, 29.7cm, multi_pages: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+#scanned_effect(rng, 21cm, 29.7cm, multi_pages: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), [
 
 
 #align(center, text(17pt)[
@@ -71,4 +71,4 @@ Aucune pertes humaine ni aucun blessé n'est à déplorer. Ceci est principaleme
 Tous les soldats de la brigade tiennent à souligner l'aggresivité et la sournoiserie dont ont fait preuve les cibles.
 
 Note : #censor("Le Sergent Y. Cadoret a été envoyé en cellule d'évaluation psychiatrique").
-])
+], [coucou])

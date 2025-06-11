@@ -20,7 +20,7 @@
   let typedtext(c) = move(dy: -3pt, text(font: "P22 Typewriter", move(dx: write_dx * 1pt, dy: write_dy * 1pt, c)))
 
 
-  scanned_effect(rng, 21cm, 29.7cm, old_effect:30%, fast:true, rotate(49deg, text(90pt,font:"Liberation Sans",fill: rgb("#ff00031A"), [*CONFIDENTIEL*])),rng=>[
+  scanned_effect(rng, 21cm, 29.7cm, old_effect:30%, fast:true, rotate(49deg, text(90pt,font:"Liberation Sans",fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), [
   
     #set text(size:14pt)
     

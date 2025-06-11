@@ -14,7 +14,7 @@
 
   let rng = gen-rng-f(1+(repr(prenom) + repr(nom) + repr(maj)).codepoints().map(str.to-unicode).sum())
 
-  scanned_effect(rng, 21cm, 14.8cm, old_effect: 30%, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+  scanned_effect(rng, 21cm, 14.8cm, old_effect: 30%, fast: true, rotate(34deg, text(70pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), [
     #align(center)[
       #move(dx: -50pt, text(size: 15pt)[*DIRECTION de la SURVEILLANCE du TERRITOIRE*])
 

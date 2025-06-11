@@ -8,7 +8,7 @@
 
   let rng = gen-rng-f((repr(prenoms) + repr(nom)).codepoints().map(str.to-unicode).sum())
 
-  scanned_effect(rng, 21cm, 25cm, old_effect: old_effect,fast: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), rng => [
+  scanned_effect(rng, 21cm, 25cm, old_effect: old_effect,fast: true, rotate(44deg, text(80pt, font: "Liberation Sans", fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), [
     #place(top + left, dy: -20pt, image("armee_terre_desat.png", width: 60pt))
     
     #align(center)[
