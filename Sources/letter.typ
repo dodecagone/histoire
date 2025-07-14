@@ -22,7 +22,7 @@
 
   scanned_effect(rng, 21cm, 29.7cm, old_effect:30%, fast:true, rotate(49deg, text(90pt,font:"Liberation Sans",fill: rgb("#ff00031A"), [*CONFIDENTIEL*])), [
   
-    #set text(size:14pt)
+    #set text(size:11pt)
     
     #grid(columns:(59fr,41fr))[][#typedtext(destinataire)]
     #grid(columns:(41fr,59fr))[#typedtext(expediteur)][#align(bottom + right, typedtext(lieu_date))]
