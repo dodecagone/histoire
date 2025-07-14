@@ -49,16 +49,17 @@
 
   Je vous écris afin de vous faire part d'une découverte récente.
   J'ai récemment retrouvé deux avis de recherche datant de Juillet 1998.
-  L'un deux a piqué ma curiosité, car il s'agit d'une jeune femme d'une vingtaine d'année dénommée Marie #censor("Chen").\ 
-  Certains éléments me portent à croire qu'il s'agit de la même personne que l'hystérique que nous avons amené au poste hier, bien que cette dernière semble avoir la soixantaine.
+  L'un deux a piqué ma curiosité, car il s'agit d'une jeune femme d'une vingtaine d'années dénommée Marie #censor("Chen").\ 
+  Certains éléments me poussent à croire qu'il s'agit de la même personne que l'hystérique que nous avons amenée au poste hier, bien que cette dernière semble avoir la soixantaine.
   Il a été documenté depuis les deux guerres que le vieillissement corporel est fortement accéléré suite à l'exposition d'un traumatisme intense.\ 
+  Je vous ai joint les deux avis de recherches. Le deuxième, un jeune homme accompagnant Marie, n'a pas encore été retrouvé à ce jour.
+  Tout porte à croire que Marie #censor("Chen") -- si c'est bien elle -- peut nous aider à retrouver le jeune homme.
   J'espère que vous saurez m'accorder un entretien avec elle afin de me permettre d'éclaircir mon jugement.
 
   Je vous prie d'agréer l'expression de mes salutations distinguées,
   ],
   align(center, image("Images/Signatures/sig_spesnault2.png")),
   [
-  PS : Je vous ai joint les deux avis de recherches. Le deuxième, un jeune homme accompagnant Marie, n'a pas encore été retrouvé à ce jour. Tout porte à croire que Marie -- si c'est bien elle -- est la seule survivante de l'expédition.
   ]
 )
 

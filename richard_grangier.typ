@@ -26,14 +26,13 @@
   [
   Bonjour Inspecteur,
 
-  Je pense franchement que c'est une perte de temps, et de votre talent.
-  Même s'il s'agissait de la même personne (et j'en doute), ça ne ferait aucune différence pour le personnel de l'asile où elle finira internée.\
-  Je vous accorde votre entretien à condition que vous ne passiez pas trop de temps sur cette affaire. Venez me voir demain matin dans mon bureau qu'on en rediscute.\
-  Quant à l'autre avis de recherche, je pense aussi que le garçon est mort; je clos son dossier.
-  Un détail me titille cependant : dans l'avis de recherche du garçon, il est stipulé qu'ils étaient trois personnes : Joann, Marie, et ...?
-  Un de vos collègue a cherché tout l'après-midi, sans rien trouver.
-  J'en déduit donc qu'aucun avis de recherche n'a été publié pour le dernier.\
-  Je préférerais que vous alliez interroger la famille du garçon pour en apprendre plus sur ce fantôme.
+  Je pense franchement que c'est une perte de temps d'interroger la folle. J'ai jeté un oeil aux retranscriptions : elle dit n'importe quoi.
+  Je veux bien vous accorder votre entretien à condition que vous n'y passiez pas la semaine.\ 
+  Quant aux deux avis de recherche, j'ai remarqué que celui du garçon mentionne une troisième personne. Il y aurait donc Marie, Joann, et \...?\
+  Ménard a cherché tout l'après-midi, un troisième avis de recherche, sans trouver. Vous lui demanderez.\
+  Pour Marie et Joann, à moins que vous ne fassiez des miracles avec l'autre folle, je vais les considérer comme morts et clore leurs dossier.
+  Vous irez annoncer la nouvelle aux familles, si vous le souhaitez.\
+  Venez me voir demain dans mon bureau pour qu'on rediscute de cet entretien.
 
   À demain,
   ],
@@ -50,8 +49,8 @@
   [
   Inspecteur,
 
-  J'ai appris, par une lettre du Commissaire, votre prétendue démission.
-  Je suis à la fois surpris, et déçu de la nouvelle, en partie car je ne l'apprends pas de vous.
+  J'ai viens d'apprendre, par une lettre du Commissaire, votre prétendue démission.
+  Je suis à la fois surpris et déçu de la nouvelle, en partie car je ne l'apprends pas de vous.
 
   Votre début de carrière prometteur parmis nous peut vous garantir une promotion prestigieuse dès l'année prochaine.
   Vous êtes un élément essentiel de notre division. De plus dois-je vous apprendre que partir en coup de vent ne se fait pas, surtout sans justification.
